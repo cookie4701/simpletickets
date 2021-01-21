@@ -90,8 +90,8 @@ echo "<div class=\"row\">";
 echo "<div class=\"col-lg-2\">";
 echo "<label for=\"description\">Problembeschreibung</label>";
 echo "</div>";
-echo "<div class=\"col-lg-2\">";
-echo "<input type=\"text\" value=\"$description\" id=\"description\" $disabled>";
+echo "<div class=\"col-lg-8\">";
+echo "$description";
 echo "</div>";
 echo "</div>";
 
@@ -129,8 +129,8 @@ if ($id > 0 ) {
 
 		echo "<div class=\"comment card mt-1 mb-1\"> <div class=\"card-body\"><p class=\"small\">" . $comments[$i]["reporter"] . " schrieb am " . $comments[$i]["comment_date"] . ":</p><p> " . $comments[$i]["comment"] . "</p></div></div>";
 	}
-
-	if ($status != 1) {
+	
+	if ($status != "Offen") {
 		$disabled = "disabled";
 	} else {
 		$disabled = "";
