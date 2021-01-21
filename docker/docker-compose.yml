@@ -1,0 +1,26 @@
+version: '3.1'
+services:
+        db:
+                image: mariadb:latest
+                container_name: mysql_db
+                restart: always
+                environment:
+                        MYSQL_ROOT_PASSWORD: dockersecret
+                        MYSQL_USER: jugendbuero
+                        MYSQL_PASSWORD: buerojugend
+                        MYSQL_DATABASE: ticketing
+                volumes:
+                        - ../database:/var/lib/mysql
+                        - ../sql-init:/docker-entrypoint-initdb.d
+        web:
+                image: toasterlint/php-apache-mysql:latest
+                depends_on:
+                        - db
+                container_name: apache_web
+                restart: always
+                ports:
+                        - "8080:80"
+                volumes:
+                        - ../webapp:/var/www/html
+                links:
+                        - db
