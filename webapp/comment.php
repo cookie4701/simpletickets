@@ -19,7 +19,7 @@ if (! isset($_POST["reporter"]) || ! isset($_POST["comment"] ) ) {
 require_once 'tickets.php';
 $ticketing = new Ticketing();
 
-if (isset($_FILES["attachment"]) ) {
+if (isset($_FILES["attachment"]) && $_FILES["attachment"]["name"] !== "" ) {
 	$ticketing->insertCommentWithAttachment($id, $_POST["reporter"], $_POST["comment"], $_FILES["attachment"]);
 
 } else { 
