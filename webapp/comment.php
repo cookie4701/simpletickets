@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 if (! isset($_POST["idTicket"] ) ) {
 	header('Location: ./');
@@ -16,5 +19,10 @@ if (! isset($_POST["reporter"]) || ! isset($_POST["comment"] ) ) {
 require_once 'tickets.php';
 $ticketing = new Ticketing();
 
-$ticketing->insertComment($id, $_POST["reporter"], $_POST["comment"]);
+if (isset($_FILES["attachment"]) ) {
+	$ticketing->insertCommentWithAttachment($id, $_POST["reporter"], $_POST["comment"], $_FILES["attachment"]);
+
+} else { 
+	$ticketing->insertComment($id, $_POST["reporter"], $_POST["comment"]);
+}
 header("Location: ./ticket.php?idTicket=$id");

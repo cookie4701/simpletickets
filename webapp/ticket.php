@@ -127,7 +127,14 @@ if ($id > 0 ) {
 	$comments = $ticketing->getCommentsById($id);
 	for ($i = 0; $i < count($comments); $i++ ) {
 
-		echo "<div class=\"comment card mt-1 mb-1\"> <div class=\"card-body\"><p class=\"small\">" . $comments[$i]["reporter"] . " schrieb am " . $comments[$i]["comment_date"] . ":</p><p> " . $comments[$i]["comment"] . "</p></div></div>";
+		echo "<div class=\"comment card mt-1 mb-1\"> <div class=\"card-body\"><p class=\"small\">" . 
+			$comments[$i]["reporter"] . " schrieb am " . 
+			$comments[$i]["comment_date"] . ":</p><p> " . 
+			$comments[$i]["comment"];
+		if ($comments[$i]["fileupload"] !== "" ) {
+			echo "<br> <a href=\"" . $comments[$i]["fileupload"] . "\" >" . $comments[$i]["fileupload"] . "</a>";
+		}
+		echo "</p></div></div>\n";
 	}
 	
 	if ($status != "Offen") {
@@ -137,7 +144,7 @@ if ($id > 0 ) {
 	}
 ?>
 <div class="title"><h2>Eigenen Kommentar verfassen</h2></div>
-<form action="comment.php" method="POST">
+<form action="comment.php" method="POST" enctype="multipart/form-data" >
 <div><input type="hidden" name="idTicket" value="<?php echo $id; ?>" <?php echo $disabled; ?>></div>
 <div> <label for="reporter">Kommentator</label>
 <input type="text" name="reporter" id="reporter" <?php echo $disabled; ?> ></div>
