@@ -1,0 +1,9 @@
+@media print
+   {
+      p.bodyText {font-family:georgia, times, serif;}
+      .noprint
+      {
+        display:none
+      }
+   }
+

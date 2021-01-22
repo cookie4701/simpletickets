@@ -2,11 +2,12 @@
 
 <head>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
  </head>
 
 <body>
 <div class="container">
-<div class="row">
+<div class="row noprint">
 	<div class="col-lg-12">
 		<a href="index.php">Zurück zur Liste</a>
 	</div>
@@ -41,62 +42,64 @@ if ( $id >= 0 ) {
 		$disabled = "disabled";
 	}
 }
-echo "<div class=\"title\"><h2>Angaben zum Ticket</h2></div>";
-echo "<div class=\"row\">";
+echo "<div class=\"row\"> \n";
+echo "	<div class=\"col-lg-12\"> \n";
+echo "		<div class=\"title\"><h2>Angaben zum Ticket</h2></div>";
+echo "	</div> \n";
+echo "</div> \n";
+echo "<div class=\"row border\">";
 echo "<div class=\"col-lg-2\">";
-echo "<label for=\"title\">Titel</label>";
+echo "Titel";
 echo "</div>";
-echo "<div class=\"col-lg-2\">";
-echo "<input type=\"text\" id=\"title\" value=\"$title\" $disabled>";
+echo "<div class=\"col-lg-10\">";
+echo "$title";
 echo "</div> </div>";
 
-echo "<div class=\"row\">";
+echo "<div class=\"row border\">";
 echo "<div class=\"col-lg-2\">";
-echo "<label for=\"tool\">Tool</label>";
+echo "Tool";
 echo "</div>";
-echo "<div class=\"col-lg-2\">";
-echo "<input type=\"text\" id=\"tool\" value=\"$tool\" $disabled>";
+echo "<div class=\"col-lg-10\">";
+echo "$tool";
 echo "</div>";
 echo "</div>";
 
-echo "<div class=\"row\">";
+echo "<div class=\"row border\">";
 echo "<div class=\"col-lg-2\">";
-echo "<label for=\"reporter\">Berichterstatter</label>";
+echo "Berichterstatter";
 echo "</div>";
-echo "<div class=\"col-lg-2\">";
-echo "<input type=\"text\" id=\"reporter\" value=\"$reporter\" $disabled>";
+echo "<div class=\"col-lg-10\">";
+echo "$reporter";
 echo "</div>";
 echo "</div>";
 
-echo "<div class=\"row\">";
+echo "<div class=\"row border\">";
 echo "<div class=\"col-lg-2\">";
-echo "<label for=\"reported_first\">Einreichdatum</label>";
+echo "Einreichdatum";
 echo "</div>";
-echo "<div class=\"col-lg-2\">";
-echo "<input type=\"text\" value=\"$reported_first\" id=\"reported_first\" $disabled>";
+echo "<div class=\"col-lg-10\">";
+echo "$reported_first";
 echo "</div>";
 echo "</div>";
 
-echo "<div class=\"row\">";
-echo "<div class=\"col-lg-2\">";
-echo "<label for=\"status\">Status</label>";
+echo "<div class=\"row border\">";
+echo "<div class=\"col-lg-2\">Status";
 echo "</div>";
-echo "<div class=\"col-lg-2\">";
-echo "<input type=\"text\" value=\"$status\" id=\"status\" $disabled>";
+echo "<div class=\"col-lg-10\">$status";
 echo "</div>";
 echo "</div>";
 
-echo "<div class=\"row\">";
+echo "<div class=\"row border\">";
 echo "<div class=\"col-lg-2\">";
-echo "<label for=\"description\">Problembeschreibung</label>";
+echo "Problembeschreibung";
 echo "</div>";
-echo "<div class=\"col-lg-8\">";
+echo "<div class=\"col-lg-10\">";
 echo "$description";
 echo "</div>";
 echo "</div>";
 
 ?>
-<div class="row">
+<div class="row noprint">
 	<div class="col-lg-4">
 		<form action="ticket_switch_status.php" method="POST">
 		<input type="hidden" name="status" value="1">
@@ -143,8 +146,8 @@ if ($id > 0 ) {
 		$disabled = "";
 	}
 ?>
-<div class="title"><h2>Eigenen Kommentar verfassen</h2></div>
-<form action="comment.php" method="POST" enctype="multipart/form-data" >
+<div class="title noprint"><h2>Eigenen Kommentar verfassen</h2></div>
+<form action="comment.php" method="POST" enctype="multipart/form-data" class="noprint" >
 <div><input type="hidden" name="idTicket" value="<?php echo $id; ?>" <?php echo $disabled; ?>></div>
 <div> <label for="reporter">Kommentator</label>
 <input type="text" name="reporter" id="reporter" <?php echo $disabled; ?> ></div>
